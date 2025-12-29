@@ -1,6 +1,6 @@
-# 🏦 Lombard Script (ESX)
+# 🏦 Pawnshop Script (ESX)
 
-Custom **pawn shop (lombard)** script designed **only for FiveM ESX servers**.  
+Custom **Pawn Shop** script designed **only for FiveM ESX servers**.  
 Players can interact with an NPC using a target system, open a menu, and purchase items using **cash or bank**.
 
 ---
