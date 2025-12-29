@@ -36,7 +36,7 @@ function openPaymentMenu(item, price)
                 description = '$' .. price,
                 icon = 'fas fa-money-bill-wave',
                 onSelect = function()
-                    TriggerServerEvent('redt-lombardas:buyItemWithMethod', item, price, 'cash')
+                    TriggerServerEvent('kts-lombardas:buyItemWithMethod', item, price, 'cash')
                 end
             },
             {
@@ -44,7 +44,7 @@ function openPaymentMenu(item, price)
                 description = '$' .. price,
                 icon = 'fas fa-university',
                 onSelect = function()
-                    TriggerServerEvent('redt-lombardas:buyItemWithMethod', item, price, 'bank')
+                    TriggerServerEvent('kts-lombardas:buyItemWithMethod', item, price, 'bank')
                 end
             }
         }
@@ -81,7 +81,7 @@ CreateThread(function()
                 label = 'Atidaryti lombardą',
                 distance = 2.0,
                 onSelect = function(entity)
-                    ESX.TriggerServerCallback('redt-lombardas:canAccess', function(can)
+                    ESX.TriggerServerCallback('kts-lombardas:canAccess', function(can)
                         if can then
                             openLombardMenu()
                         else
@@ -98,10 +98,11 @@ CreateThread(function()
     end
 end)
 
-RegisterNetEvent('redt-lombardas:showNotify', function(title, message, type)
+RegisterNetEvent('kts-lombardas:showNotify', function(title, message, type)
     exports.lation_ui:notify({
         title = title,
         message = message,
         type = type
     })
+
 end)
