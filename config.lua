@@ -1,6 +1,6 @@
 Config = {}
 
-Config.JobName = 'lombardas'
+Config.JobName = 'pawnshop'
 
 Config.NPC = {
     {
@@ -9,9 +9,9 @@ Config.NPC = {
 }
 
 Config.Items = {
-    { label = "Įsilaužimo Įrankis", item = "lockpick", price = 20000 },
-    { label = "USB Atmintukas", item = "usb_drive", price = 15000 },
-    { label = "Garso Kolonele", item = "boombox", price = 1000 },
-    { label = "Racija", item = "radio", price = 1000 },
-    { label = "Išmanusis Telefonas", item = "phone", price = 1500 }
+    { label = "Lockpick", item = "lockpick", price = 20000 },
+    { label = "USB Drive", item = "usb_drive", price = 15000 },
+    { label = "Boombox", item = "boombox", price = 1000 },
+    { label = "Radio", item = "radio", price = 1000 },
+    { label = "Phone", item = "phone", price = 1500 }
 }
