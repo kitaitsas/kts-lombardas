@@ -19,6 +19,5 @@ client_scripts {
 
 dependencies {
     'es_extended',
-    'ox_lib',
     'ox_target'
 }
