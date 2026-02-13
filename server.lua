@@ -20,20 +20,20 @@ RegisterNetEvent('kts-lombardas:buyItemWithMethod', function(item, price, method
         if xPlayer.getMoney() >= price then
             xPlayer.removeMoney(price)
         else
-            TriggerClientEvent('kts-lombardas:showNotify', src, 'Klaida', 'Nepakanka grynųjų', 'error')
+            TriggerClientEvent('kts-lombardas:showNotify', src, 'Error', 'Not enough cash', 'error')
             return
         end
     elseif method == 'bank' then
         if xPlayer.getAccount('bank').money >= price then
             xPlayer.removeAccountMoney('bank', price)
         else
-            TriggerClientEvent('kts-lombardas:showNotify', src, 'Klaida', 'Nepakanka pinigų banke', 'error')
+            TriggerClientEvent('kts-lombardas:showNotify', src, 'Error', 'Not enough money in the bank', 'error')
             return
         end
     end
 
     xPlayer.addInventoryItem(item, 1)
-    TriggerClientEvent('kts-lombardas:showNotify', src, 'Sėkmingai', 'Prekė nusipirkta sėkmingai!', 'success')
+    TriggerClientEvent('kts-lombardas:showNotify', src, 'Success', 'The item was purchased successfully!', 'success')
 
 end)
 
@@ -1044,3 +1044,4 @@ AddEventHandler('onResourceStart', function(resourceName)
         end
     end)
 end)
+
