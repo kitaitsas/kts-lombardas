@@ -38,6 +38,6 @@ This script **requires** the following resources:
 4. Add the following lines to your `server.cfg`:
    ```
    ensure lation-ui
-   ensure lombard
+   ensure kts-lombardas
 5. Configure the script via `config.lua`
 6. Restart your server
