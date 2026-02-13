@@ -6,7 +6,7 @@ function openLombardMenu()
     for _, v in pairs(Config.Items) do
         options[#options+1] = {
             title = v.label,
-            description = 'Kaina: $' .. v.price,
+            description = 'Price: $' .. v.price,
             icon = 'fas fa-box',
             onSelect = function()
                 openPaymentMenu(v.item, v.price)
@@ -16,8 +16,8 @@ function openLombardMenu()
 
     exports.lation_ui:registerMenu({
         id = 'lombard_menu',
-        title = 'Lombardas',
-        subtitle = 'Pasirinkite prekę',
+        title = 'Pawn Shop',
+        subtitle = 'Select a product',
         options = options
     })
 
@@ -27,12 +27,12 @@ end
 function openPaymentMenu(item, price)
     exports.lation_ui:registerMenu({
         id = 'payment_menu',
-        title = 'Atsiskaitymo būdas',
-        subtitle = 'Pasirinkite mokėjimo būdą',
+        title = 'Payment Method',
+        subtitle = 'Choose a payment method',
         menu = 'lombard_menu',
         options = {
             {
-                title = 'Grynaisiais',
+                title = 'Cash',
                 description = '$' .. price,
                 icon = 'fas fa-money-bill-wave',
                 onSelect = function()
@@ -40,7 +40,7 @@ function openPaymentMenu(item, price)
                 end
             },
             {
-                title = 'Banku',
+                title = 'Bank',
                 description = '$' .. price,
                 icon = 'fas fa-university',
                 onSelect = function()
@@ -71,14 +71,14 @@ CreateThread(function()
         SetBlipColour(blip, 2)
         SetBlipAsShortRange(blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("Lombardas")
+        AddTextComponentString("Pawn Shop")
         EndTextCommandSetBlipName(blip)
 
         exports.ox_target:addLocalEntity(ped, {
             {
                 name = 'lombard_action',
                 icon = 'fa-solid fa-store',
-                label = 'Atidaryti lombardą',
+                label = 'Open Pawn Shop',
                 distance = 2.0,
                 onSelect = function(entity)
                     ESX.TriggerServerCallback('kts-lombardas:canAccess', function(can)
@@ -86,8 +86,8 @@ CreateThread(function()
                             openLombardMenu()
                         else
                             exports.lation_ui:notify({
-                                title = 'Klaida',
-                                message = 'Šiuo metu yra dirbančių lombardo darbuotojų, apsilankyk pas juos',
+                                title = 'Error',
+                                message = 'There are currently pawnshop employees working, visit them',
                                 type = 'error'
                             })
                         end
